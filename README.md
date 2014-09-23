@@ -1,1 +1,1 @@
-Files for my personal website (kyle-young.github.io)
+Files for my personal website (kyle-young.github.io).  Uses SOLID Bootstrap 3 theme by Carlos Alvarez (http://alvarez.is).

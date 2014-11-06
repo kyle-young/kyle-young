@@ -90,8 +90,10 @@
 
        <div class="row">
         <div class="col-lg-6">
-          <h3 class="ctitle">Importing the data:</h3>
+          <h3 class="ctitle">Importing/Exporting the data:</h3>
           <p><b>Comment:</b> Since CouchDB works natively with JSON, importing all the files was straightfoward.  The only hiccup was that I put dashes in a variable name when getting the JSON files so I had to remove them (using replace in Sublime Text).</p>
+          <p>In terms of exporting , I used a list function to save the CouchDB output into a text file.</p>
+          <p>After that, I sorted the files by value (in Java) to make it easier to find meaning in the data.  Otherwise I'd have to look through every entry myself</p>
         </div>
           <div class="col-lg-6">
               <h4>Loading JSON files into CouchDB (Bash):</h4>
@@ -119,6 +121,12 @@ done
           decision: "decision",
           punishment: "punishment"
         }]}]}</code></pre>
+          <h4>List Function</h4>
+          <pre class="language-javascript"><code class="language-javascript">function(head,req) { 
+  while(row = getRow()){
+    send(row.key +\" \"+ row.value +\"\\n\");
+  }
+}</code></pre>
       </div>
       </div><! --/row -->
 
@@ -180,6 +188,8 @@ done
       <div class="row">
         <div class="col-lg-6">
           <h3 class="ctitle">Champions Findings: </h3>
+          <p><b>Most vocal champions: </b><br>1) Ezreal <br> 2) Lee Sin <br> 3) Teemo (aka Satan) <br> 4) Katarina <br> 5) Darius <br> 6) Master Yi</p>
+          <p><b>Most tribunal appearances: </b><br>1) Ezreal <br> 2) Taric <br> 3) Lee Sin <br> 4) Master Yi <br> 5) Katarina <br> 6) Jax</p>
           <p><b>Comment: </b>This section has two parts, one for how many times a champion appeared in the tribunal, and one for how many times each champion sent a message.  The code for both of them are similar, for the first case I just send one count per case while for the latter I sent a count for every message.</p>
           <p>After this mapper code is run, the key returned may have an [All] next to it if the player sent their first message via all chat so I deleted that with replaceAll in Sublime Text.  I also had to write a quick Java program to combine the two lines into one.</p>
         </div>
@@ -206,7 +216,8 @@ done
       <div class="row">
         <div class="col-lg-6">
           <h3 class="ctitle">Chat Text Findings: </h3>
-          <p><b>Comment: </b>Since there are slight variations in messages, doing a straight count of whole sentences would be useless.  Also, doing an extremely complicated analysis is out of my scope so I settled with something manageable.  I decided to go with a simple word count. </p>
+          <p><b>Word occurances: </b> <br><b>Noob: </b> 2778 <br><b>Report: </b> 3092 <br></p>
+          <p><b>Comment: </b>Since there are slight variations in messages, doing a straight count of whole sentences would be useless.  Also, doing an extremely complicated analysis is out of my scope so I settled with something manageable.  I decided to go with a simple word count. I'll add more words if I think of more interesting ones.</p>
         </div>
           <div class="col-lg-6">
               <h4>Mapper code</h4>
